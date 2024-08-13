@@ -26,6 +26,8 @@ export const App = () => {
     setSelectedGood('');
   };
 
+  const isSelected = good => selectedGood === good;
+
   return (
     <main className="section container">
       <h1 className="title is-flex is-align-items-center">
@@ -45,12 +47,12 @@ export const App = () => {
             <tr
               key={good}
               data-cy="Good"
-              className={classNames(
-                selectedGood === good ? 'has-background-success-light' : '',
-              )}
+              className={classNames({
+                'has-background-success-light': isSelected(good),
+              })}
             >
               <td>
-                {selectedGood === good ? (
+                {isSelected(good) ? (
                   <button
                     data-cy="RemoveButton"
                     type="button"
